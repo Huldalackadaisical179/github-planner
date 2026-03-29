@@ -1,6 +1,6 @@
 # GitHub Planner
 
-MCS techpack for GitHub project management. Creates issues from planning documents, organizes epics as GitHub Projects (v2), and triages backlogs with PM-level insights on priority, UX impact, and project health.
+Creates issues from planning documents, organizes epics as GitHub Projects (v2), and triages backlogs with PM-level insights on priority, UX impact, and project health.
 
 ## Prerequisites
 
