@@ -123,5 +123,5 @@ supplementaryDoctorChecks:
   - type: shellScript
     name: GitHub CLI authenticated
     section: Authentication
-    command: "gh auth status >/dev/null 2>&1"
+    command: hooks/gh-auth-check-doctor.sh
     fixCommand: "gh auth login --scopes repo"
