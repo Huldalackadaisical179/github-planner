@@ -79,7 +79,7 @@ When extracting, produce a structured JSON array:
 
 ## Issue Templates
 
-Select the appropriate template from `templates/issues/` based on the task type:
+Select the appropriate template from `references/` based on the task type:
 
 | Task Type | Template | When to Use |
 |---|---|---|

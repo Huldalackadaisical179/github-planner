@@ -78,7 +78,7 @@ gh api repos/OWNER/REPO/milestones --method POST -f title="MILESTONE_TITLE" -f d
 
 Create issues in execution order (Phase 1 first) so dependency references work.
 
-**Template selection**: Read the matching template from `templates/issues/` based on task type:
+**Template selection**: Read the matching template from the skill's `references/` directory based on task type:
 - Refactoring/moves/migrations/file splits → `refactoring.md`
 - Deletions/cleanup → `cleanup.md`
 - Bug fixes → `bug.md`

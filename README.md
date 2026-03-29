@@ -107,16 +107,17 @@ Each template includes Summary, Tasks (checklist), Files Affected, Acceptance Cr
 
 ```
 github-planner/
-  agents/github-planner.md    # Agent that creates issues via gh CLI
+  agents/github-planner.md          # Agent that creates issues via gh CLI
   commands/
-    plan-issues.md             # /plan-issues command
-    plan-preview.md            # /plan-preview command
-  skills/plan-to-issues/       # Task extraction and label mapping logic
-  templates/issues/            # Issue body templates (4 types)
-  templates/instructions.md    # CLAUDE.local.md instructions
-  hooks/gh-auth-check.sh       # Session hook — verifies gh auth on start
-  config/settings.json         # Permission allowlist for gh commands
-  techpack.yaml                # Techpack manifest
+    plan-issues.md                   # /plan-issues command
+    plan-preview.md                  # /plan-preview command
+  skills/plan-to-issues/
+    SKILL.md                         # Task extraction and label mapping logic
+    references/                      # Issue body templates (4 types)
+  templates/instructions.md          # CLAUDE.local.md instructions
+  hooks/gh-auth-check.sh             # Session hook — verifies gh auth on start
+  config/settings.json               # Permission allowlist for gh commands
+  techpack.yaml                      # Pack manifest
 ```
 
 ## License

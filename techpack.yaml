@@ -46,22 +46,12 @@ components:
     description: JSON processor (used by session hook)
     brew: jq
 
-  # ── Issue Templates ────────────────────────────────────────────────────
-  - id: issue-templates
-    displayName: Issue Templates
-    description: >-
-      6 issue body templates (refactoring, cleanup, migration, bug, feature, decomposition).
-      Agent selects the matching template based on task type.
-    template:
-      source: templates/issues
-      destination: issue-templates
-
   # ── Skill: plan-to-issues ──────────────────────────────────────────────
   - id: plan-to-issues
     description: >-
       Parses planning documents and extracts actionable tasks.
       Maps priorities, phases, and dependencies to GitHub labels and milestones.
-    dependencies: [issue-templates]
+      Includes issue body templates (refactoring, cleanup, bug, feature).
     skill:
       source: skills/plan-to-issues
       destination: plan-to-issues
@@ -110,6 +100,7 @@ components:
 
   # ── Gitignore ──────────────────────────────────────────────────────────
   - id: gitignore
+    description: Gitignore entries for cache files
     isRequired: true
     gitignore:
       - .github-planner-cache
