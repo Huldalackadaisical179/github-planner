@@ -2,6 +2,14 @@
 
 MCS techpack for GitHub project management. Creates issues from planning documents, organizes epics as GitHub Projects (v2), and triages backlogs with PM-level insights on priority, UX impact, and project health.
 
+## Prerequisites
+
+- [MCS](https://mcs-cli.dev/) — Managed Claude Stack CLI, required to install and manage techpacks
+- [GitHub CLI](https://cli.github.com/) (`gh`) — authenticated with `repo` and `project` scopes
+- [jq](https://jqlang.github.io/jq/) — used by the session hook
+
+GitHub CLI and jq are installed automatically via Homebrew if missing. MCS must be installed first.
+
 ## Install
 
 ```bash
@@ -16,13 +24,6 @@ During setup you'll be prompted for:
 | `GITHUB_REPO` | Target repository (`owner/repo`) | Current repo |
 | `LABEL_PREFIX` | Prefix for auto-created labels | _(none)_ |
 | `DEFAULT_ASSIGNEE` | Default issue assignee | _(none)_ |
-
-### Prerequisites
-
-- [GitHub CLI](https://cli.github.com/) (`gh`) — authenticated with `repo` and `project` scopes
-- [jq](https://jqlang.github.io/jq/) — used by the session hook
-
-Both are installed automatically via Homebrew if missing.
 
 ## Commands
 
