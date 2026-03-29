@@ -194,9 +194,24 @@ Prioritized list of the top 5-10 actions the PM should take, ordered by impact:
 ```
 
 Each recommendation includes:
-- **Action verb**: ESCALATE, CLOSE, CREATE EPIC, ASSIGN, SPLIT, SCHEDULE, DEMOTE, MERGE
+- **Action verb**: ESCALATE, CLOSE, CREATE EPIC, ASSIGN, SPLIT, SCHEDULE, DEMOTE, MERGE, DEFER, VALIDATE
 - **Issue reference**: Number and title
 - **Rationale**: Why this matters — what happens if ignored
+
+### Defer and Validate Actions
+
+**DEFER** — Move an issue to a later milestone or remove from current sprint:
+- When: Issue is valid but not urgent enough for current milestone, or blocked by external factors
+- Action: Move to next milestone (`gh issue edit N --milestone "NEXT_MILESTONE"`), or remove milestone entirely
+- Add a comment explaining why: "Deferred to Phase 2 — depends on external API availability"
+- Optionally add a `deferred` label for tracking
+
+**VALIDATE** — Mark an issue as triaged and confirmed correct:
+- When: Issue has correct labels, priority, milestone, and assignee — no changes needed
+- Action: Add a `triaged` label (`gh issue edit N --add-label "triaged"`) and a thumbs-up reaction (`gh api repos/OWNER/REPO/issues/N/reactions --method POST -f content="+1"`)
+- The reaction makes validated issues visually obvious in the GitHub UI
+- Useful for tracking which issues have been reviewed in this triage cycle
+- The triage report should list validated issues separately so the PM knows what's confirmed OK
 
 ## Output Format
 

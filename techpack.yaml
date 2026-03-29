@@ -3,8 +3,8 @@ identifier: github-planner
 displayName: GitHub Planner
 description: >-
   Project management toolkit for GitHub. Creates issues from planning documents,
-  organizes epics as GitHub Projects (v2), and triages backlogs with PM-level insights
-  on priority, UX impact, and project health.
+  organizes epics as GitHub Projects (v2), triages backlogs, tracks delivery progress,
+  and provides developer workload insights — all through Claude Code.
 author: anettodev
 minMCSVersion: "2026.3.0"
 
@@ -26,6 +26,11 @@ prompts:
     type: input
     label: "Default issue assignee (GitHub username, empty to skip):"
     default: ""
+
+  - key: STALE_THRESHOLD
+    type: input
+    label: "Stale issue threshold in days (issues idle longer than this are flagged):"
+    default: "14"
 
 # ---------------------------------------------------------------------------
 # Components
@@ -131,6 +136,82 @@ components:
     command:
       source: commands/issue-triage.md
       destination: issue-triage.md
+
+  # ── Skill: discussion-builder ───────────────────────────────────────────
+  - id: discussion-builder
+    description: >-
+      Builds structured GitHub Discussions from user input or documents.
+      Supports 6 types: decisions, design proposals, retros, post-mortems,
+      distribution analyses, and evaluations/analyses.
+    skill:
+      source: skills/discussion-builder
+      destination: discussion-builder
+
+  # ── Agent: discussion-manager ──────────────────────────────────────────
+  - id: discussion-manager-agent
+    description: Creates GitHub Discussions and maintains the Knowledge Manifest with 20KB cap and yearly archival
+    dependencies: [gh]
+    agent:
+      source: agents/discussion-manager.md
+      destination: discussion-manager.md
+
+  # ── Command: /plan-discussion ──────────────────────────────────────────
+  - id: plan-discussion
+    description: "Create a GitHub Discussion with /plan-discussion [path] [--type TYPE]"
+    dependencies: [gh, discussion-builder, discussion-manager-agent]
+    command:
+      source: commands/plan-discussion.md
+      destination: plan-discussion.md
+
+  # ── Skill: plan-insights ────────────────────────────────────────────────
+  - id: plan-insights-skill
+    description: >-
+      Project delivery metrics — milestone burndown, delivery pipeline,
+      stale work detection, and project health dashboard.
+    skill:
+      source: skills/plan-insights
+      destination: plan-insights
+
+  # ── Skill: dev360-insights ────────────────────────────────────────────
+  - id: dev360-insights-skill
+    description: >-
+      Developer workload and team health analysis. Focused on balance
+      and sustainability — not productivity surveillance. No leaderboards.
+    skill:
+      source: skills/dev360-insights
+      destination: dev360-insights
+
+  # ── Agent: plan-insights-analyst ───────────────────────────────────────
+  - id: plan-insights-analyst-agent
+    description: Analyzes project delivery metrics — burndown, pipeline, stale work, health. Read-only.
+    dependencies: [gh]
+    agent:
+      source: agents/plan-insights-analyst.md
+      destination: plan-insights-analyst.md
+
+  # ── Agent: dev360-analyst ──────────────────────────────────────────────
+  - id: dev360-analyst-agent
+    description: Analyzes developer activity and team health. Workload balance, not surveillance. Read-only.
+    dependencies: [gh]
+    agent:
+      source: agents/dev360-analyst.md
+      destination: dev360-analyst.md
+
+  # ── Command: /plan-insights ────────────────────────────────────────────
+  - id: plan-insights
+    description: "Project delivery insights with /plan-insights [--scope burndown|pipeline|stale|health]"
+    dependencies: [gh, plan-insights-skill, plan-insights-analyst-agent]
+    command:
+      source: commands/plan-insights.md
+      destination: plan-insights.md
+
+  # ── Command: /dev360-insights ──────────────────────────────────────────
+  - id: dev360-insights
+    description: "Developer workload and health insights with /dev360-insights [--dev @user]"
+    dependencies: [gh, dev360-insights-skill, dev360-analyst-agent]
+    command:
+      source: commands/dev360-insights.md
+      destination: dev360-insights.md
 
   # ── Hook: session start — verify gh auth ───────────────────────────────
   - id: gh-auth-check

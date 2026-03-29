@@ -7,7 +7,12 @@
       "Bash(gh repo view*)",
       "Bash(gh auth status*)",
       "Bash(gh project *)",
-      "Bash(gh api graphql*)"
+      "Bash(gh api graphql*)",
+      "Bash(gh discussion *)",
+      "Bash(gh api repos/*/discussion*)",
+      "Bash(gh pr *)",
+      "Bash(gh run *)",
+      "Bash(gh workflow *)"
     ]
   },
   "env": {

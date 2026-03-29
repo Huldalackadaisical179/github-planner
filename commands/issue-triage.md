@@ -66,6 +66,12 @@ Create split issues? [y/N]
 
 ### Suggested Epics (N groups)
 Create projects? (will run /plan-epic --link-only for each) [y/N]
+
+### Defer Issues (N issues)
+Defer issues to a later milestone? (one by one with confirmation) [y/N]
+
+### Validate Issues (N issues)
+Mark reviewed issues as triaged? [y/N]
 ```
 
 **Each action requires confirmation. Never batch-apply without explicit approval.**
@@ -77,6 +83,8 @@ For approved actions:
 - **Closures**: Add comment with reason, then `gh issue close N`
 - **Splits**: Launch `github-planner` agent to create new issues
 - **Epics**: Suggest running `/plan-epic --link-only #N1 #N2 #N3` (or execute if confirmed)
+- **Defer**: Move issue to later milestone with comment, add `deferred` label
+- **Validate**: Add `triaged` label to confirm issue is correctly categorized
 
 ### 7. Final Summary
 
@@ -87,6 +95,8 @@ If actions were applied:
 - Labels updated: N issues
 - Priorities changed: N issues
 - Issues closed: N
+- Issues deferred: N
+- Issues validated: N
 - Issues split: N (M new issues created)
 - Epics created: N
 

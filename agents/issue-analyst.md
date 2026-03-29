@@ -91,7 +91,7 @@ Priority order for recommendations:
 10. Sprint planning suggestions (based on composition)
 
 Each recommendation must include:
-- Action verb (ESCALATE, CLOSE, CREATE EPIC, ASSIGN, SPLIT, SCHEDULE, DEMOTE, MERGE)
+- Action verb (ESCALATE, CLOSE, CREATE EPIC, ASSIGN, SPLIT, SCHEDULE, DEMOTE, MERGE, DEFER, VALIDATE)
 - Issue reference with title
 - Clear rationale — what happens if this is ignored
 
@@ -121,11 +121,25 @@ gh issue edit N --repo OWNER/REPO --add-label "label1,label2"
 ```bash
 gh issue comment N --repo OWNER/REPO --body "Closing: stale for N days, superseded by #M"
 gh issue close N --repo OWNER/REPO
+gh api repos/OWNER/REPO/issues/N/reactions --method POST -f content="-1"
 ```
 
 **Issue splits**: Launch the `github-planner` agent with the split specifications.
 
 **Epic creation**: Suggest running `/plan-epic --link-only #N1 #N2 #N3`.
+
+**Defer** (move to later milestone):
+```bash
+gh issue edit N --repo OWNER/REPO --milestone "NEXT_MILESTONE"
+gh issue comment N --repo OWNER/REPO --body "Deferred: {reason}. Moved to {milestone}."
+gh issue edit N --repo OWNER/REPO --add-label "deferred"
+```
+
+**Validate** (mark as triaged and confirmed correct):
+```bash
+gh issue edit N --repo OWNER/REPO --add-label "triaged"
+gh api repos/OWNER/REPO/issues/N/reactions --method POST -f content="+1"
+```
 
 ## Safety Rules
 
