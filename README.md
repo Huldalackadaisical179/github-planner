@@ -4,8 +4,7 @@
   <img src="assets/logo.png" width="180" alt="GitHub Planner Logo" />
 </picture>
 
-### Your GitHub Project — planned, tracked, and healthy.
-
+### Your GitHub Project — planned, tracked, and healthy
 
 [![MCS](https://img.shields.io/badge/MCS-Tech_Pack-8B5CF6.svg)](https://mcs-cli.dev)
 [![GitHub CLI](https://img.shields.io/badge/GitHub_CLI-required-000000.svg?logo=github&logoColor=white)](https://cli.github.com)
@@ -46,7 +45,7 @@ I invite you to try [MCS](https://mcs-cli.dev).
 
 Issues, epics, triage, discussions, delivery metrics, CI health, and team workload analysis.
 
-#### Quick Reference
+### Quick Reference
 
 ```
 /plan-preview plan.md                    # Preview issues (dry run)
@@ -94,7 +93,6 @@ During setup you'll be prompted for:
 | `DEFAULT_ASSIGNEE` | Default issue assignee | _(none)_ |
 | `STALE_THRESHOLD` | Days before an issue is flagged as stale | `14` |
 
-
 ---
 
 ## 📋 Commands
@@ -114,6 +112,7 @@ Shows every issue that would be created — title, labels, milestone, risk, body
 ```
 
 Parses the document, presents the full plan for approval, then creates:
+
 1. **Labels** — auto-created with a standard color scheme if they don't exist
 2. **Milestones** — one per phase or priority group
 3. **Issues** — created in execution order with dependency references
@@ -130,6 +129,7 @@ Parses the document, presents the full plan for approval, then creates:
 ```
 
 Creates a GitHub Project (v2) from a planning document with custom fields:
+
 - **Priority**: Critical, High, Medium, Low
 - **Phase**: Extracted from document sections
 - **Status**: Backlog, Todo, In Progress, In Review, Done
