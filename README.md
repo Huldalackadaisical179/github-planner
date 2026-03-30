@@ -33,7 +33,7 @@ The operational overhead — tracking delivery, triaging backlogs, balancing wor
 - **Decisions live in Slack** — no structured record, no searchable knowledge base
 - **CI failures block quietly** — broken workflows pile up unnoticed
 
-What if you had a swiss-knife tool to handle that side?
+What if you had a swiss-knife tool to handle that side? 🤔
 
 ## ✨ The Solution
 
@@ -359,35 +359,36 @@ Used consistently across all reports:
 
 ```
 github-planner/
-  agents/
-    github-planner.md              # Creates issues via gh CLI
-    github-project-manager.md      # Creates/configures GitHub Projects v2
-    issue-analyst.md               # Analyzes issues for triage (read-only)
-    discussion-manager.md          # Creates Discussions, maintains Knowledge Manifest
-    plan-insights-analyst.md       # Analyzes delivery metrics (read-only)
-    dev360-analyst.md              # Analyzes developer workload/health (read-only)
-  commands/
-    plan-issues.md                 # /plan-issues command
-    plan-preview.md                # /plan-preview command
-    plan-epic.md                   # /plan-epic command
-    issue-triage.md                # /issue-triage command
-    plan-discussion.md             # /plan-discussion command
-    plan-insights.md               # /plan-insights command
-    dev360-insights.md             # /dev360-insights command
-  skills/
-    plan-to-issues/                # Task extraction and label mapping
-    epic-to-project/               # Project structure and custom fields
-    issue-triage/                  # Triage rules and PM dashboard
-    discussion-builder/            # Discussion types, interview logic, 6 templates
-    plan-insights/                 # Delivery metrics and health scoring
-    dev360-insights/               # Workload balance and team health
-  templates/
-    instructions.md                # CLAUDE.local.md instructions
-  hooks/
-    gh-auth-check.sh               # Session hook — verifies gh auth on start
-    gh-auth-check-doctor.sh        # Doctor check script
-  config/settings.json             # Permission allowlist for gh commands
-  techpack.yaml                    # Pack manifest
+  src/
+    agents/
+      github-planner.md              # Creates issues via gh CLI
+      github-project-manager.md      # Creates/configures GitHub Projects v2
+      issue-analyst.md               # Analyzes issues for triage (read-only)
+      discussion-manager.md          # Creates Discussions, maintains Knowledge Manifest
+      plan-insights-analyst.md       # Analyzes delivery metrics (read-only)
+      dev360-analyst.md              # Analyzes developer workload/health (read-only)
+    commands/
+      plan-issues.md                 # /plan-issues command
+      plan-preview.md                # /plan-preview command
+      plan-epic.md                   # /plan-epic command
+      issue-triage.md                # /issue-triage command
+      plan-discussion.md             # /plan-discussion command
+      plan-insights.md               # /plan-insights command
+      dev360-insights.md             # /dev360-insights command
+    skills/
+      plan-to-issues/                # Task extraction and label mapping
+      epic-to-project/               # Project structure and custom fields
+      issue-triage/                  # Triage rules and PM dashboard
+      discussion-builder/            # Discussion types, interview logic, 6 templates
+      plan-insights/                 # Delivery metrics and health scoring
+      dev360-insights/               # Workload balance and team health
+    templates/
+      instructions.md                # CLAUDE.local.md instructions
+    hooks/
+      gh-auth-check.sh               # Session hook — verifies gh auth on start
+      gh-auth-check-doctor.sh        # Doctor check script
+    config/settings.json             # Permission allowlist for gh commands
+  techpack.yaml                      # Pack manifest
 ```
 
 ---

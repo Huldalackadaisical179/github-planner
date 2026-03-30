@@ -1,0 +1,6 @@
+# MCS generated files — local to each developer's environment
+mcs.lock.yaml
+CLAUDE.local.md
+
+# MCS cache
+.github-planner-cache

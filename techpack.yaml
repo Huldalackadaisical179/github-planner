@@ -58,7 +58,7 @@ components:
       Maps priorities, phases, and dependencies to GitHub labels and milestones.
       Includes issue body templates (refactoring, cleanup, bug, feature).
     skill:
-      source: skills/plan-to-issues
+      source: src/skills/plan-to-issues
       destination: plan-to-issues
 
   # ── Agent: github-planner ──────────────────────────────────────────────
@@ -66,7 +66,7 @@ components:
     description: Creates GitHub Issues from extracted tasks using gh CLI
     dependencies: [gh]
     agent:
-      source: agents/github-planner.md
+      source: src/agents/github-planner.md
       destination: github-planner.md
 
   # ── Command: /plan-issues ──────────────────────────────────────────────
@@ -74,7 +74,7 @@ components:
     description: "Parse a document and create GitHub Issues with /plan-issues <path>"
     dependencies: [gh, plan-to-issues, github-planner-agent]
     command:
-      source: commands/plan-issues.md
+      source: src/commands/plan-issues.md
       destination: plan-issues.md
 
   # ── Command: /plan-preview ─────────────────────────────────────────────
@@ -82,7 +82,7 @@ components:
     description: "Preview issues that would be created (dry run) with /plan-preview <path>"
     dependencies: [plan-to-issues]
     command:
-      source: commands/plan-preview.md
+      source: src/commands/plan-preview.md
       destination: plan-preview.md
 
   # ── Skill: epic-to-project ──────────────────────────────────────────────
@@ -92,7 +92,7 @@ components:
       Maps phases and priorities to GitHub Project v2 custom fields.
       Defines standard field schemas for Priority, Phase, and Status.
     skill:
-      source: skills/epic-to-project
+      source: src/skills/epic-to-project
       destination: epic-to-project
 
   # ── Skill: issue-triage ────────────────────────────────────────────────
@@ -102,7 +102,7 @@ components:
       Evaluates priorities, UX impact, staleness, duplicates, and backlog health.
       Produces PM-level insights and actionable recommendations.
     skill:
-      source: skills/issue-triage
+      source: src/skills/issue-triage
       destination: issue-triage
 
   # ── Agent: github-project-manager ──────────────────────────────────────
@@ -110,7 +110,7 @@ components:
     description: Creates and configures GitHub Projects (v2), links issues, and sets custom field values
     dependencies: [gh]
     agent:
-      source: agents/github-project-manager.md
+      source: src/agents/github-project-manager.md
       destination: github-project-manager.md
 
   # ── Agent: issue-analyst ───────────────────────────────────────────────
@@ -118,7 +118,7 @@ components:
     description: Fetches and analyzes open GitHub issues for triage. Read-only by default.
     dependencies: [gh]
     agent:
-      source: agents/issue-analyst.md
+      source: src/agents/issue-analyst.md
       destination: issue-analyst.md
 
   # ── Command: /plan-epic ────────────────────────────────────────────────
@@ -126,7 +126,7 @@ components:
     description: "Create a GitHub Project (v2) from a planning document with /plan-epic <path>"
     dependencies: [gh, epic-to-project, github-project-manager-agent, plan-to-issues, github-planner-agent]
     command:
-      source: commands/plan-epic.md
+      source: src/commands/plan-epic.md
       destination: plan-epic.md
 
   # ── Command: /issue-triage ─────────────────────────────────────────────
@@ -134,7 +134,7 @@ components:
     description: "Scan and triage open issues with /issue-triage"
     dependencies: [gh, issue-triage-skill, issue-analyst-agent, github-planner-agent]
     command:
-      source: commands/issue-triage.md
+      source: src/commands/issue-triage.md
       destination: issue-triage.md
 
   # ── Skill: discussion-builder ───────────────────────────────────────────
@@ -144,7 +144,7 @@ components:
       Supports 6 types: decisions, design proposals, retros, post-mortems,
       distribution analyses, and evaluations/analyses.
     skill:
-      source: skills/discussion-builder
+      source: src/skills/discussion-builder
       destination: discussion-builder
 
   # ── Agent: discussion-manager ──────────────────────────────────────────
@@ -152,7 +152,7 @@ components:
     description: Creates GitHub Discussions and maintains the Knowledge Manifest with 20KB cap and yearly archival
     dependencies: [gh]
     agent:
-      source: agents/discussion-manager.md
+      source: src/agents/discussion-manager.md
       destination: discussion-manager.md
 
   # ── Command: /plan-discussion ──────────────────────────────────────────
@@ -160,7 +160,7 @@ components:
     description: "Create a GitHub Discussion with /plan-discussion [path] [--type TYPE]"
     dependencies: [gh, discussion-builder, discussion-manager-agent]
     command:
-      source: commands/plan-discussion.md
+      source: src/commands/plan-discussion.md
       destination: plan-discussion.md
 
   # ── Skill: plan-insights ────────────────────────────────────────────────
@@ -169,7 +169,7 @@ components:
       Project delivery metrics — milestone burndown, delivery pipeline,
       stale work detection, and project health dashboard.
     skill:
-      source: skills/plan-insights
+      source: src/skills/plan-insights
       destination: plan-insights
 
   # ── Skill: dev360-insights ────────────────────────────────────────────
@@ -178,7 +178,7 @@ components:
       Developer workload and team health analysis. Focused on balance
       and sustainability — not productivity surveillance. No leaderboards.
     skill:
-      source: skills/dev360-insights
+      source: src/skills/dev360-insights
       destination: dev360-insights
 
   # ── Agent: plan-insights-analyst ───────────────────────────────────────
@@ -186,7 +186,7 @@ components:
     description: Analyzes project delivery metrics — burndown, pipeline, stale work, health. Read-only.
     dependencies: [gh]
     agent:
-      source: agents/plan-insights-analyst.md
+      source: src/agents/plan-insights-analyst.md
       destination: plan-insights-analyst.md
 
   # ── Agent: dev360-analyst ──────────────────────────────────────────────
@@ -194,7 +194,7 @@ components:
     description: Analyzes developer activity and team health. Workload balance, not surveillance. Read-only.
     dependencies: [gh]
     agent:
-      source: agents/dev360-analyst.md
+      source: src/agents/dev360-analyst.md
       destination: dev360-analyst.md
 
   # ── Command: /plan-insights ────────────────────────────────────────────
@@ -202,7 +202,7 @@ components:
     description: "Project delivery insights with /plan-insights [--scope burndown|pipeline|stale|health]"
     dependencies: [gh, plan-insights-skill, plan-insights-analyst-agent]
     command:
-      source: commands/plan-insights.md
+      source: src/commands/plan-insights.md
       destination: plan-insights.md
 
   # ── Command: /dev360-insights ──────────────────────────────────────────
@@ -210,7 +210,7 @@ components:
     description: "Developer workload and health insights with /dev360-insights [--dev @user]"
     dependencies: [gh, dev360-insights-skill, dev360-analyst-agent]
     command:
-      source: commands/dev360-insights.md
+      source: src/commands/dev360-insights.md
       destination: dev360-insights.md
 
   # ── Hook: session start — verify gh auth ───────────────────────────────
@@ -221,7 +221,7 @@ components:
     hookEvent: SessionStart
     hookTimeout: 10
     hook:
-      source: hooks/gh-auth-check.sh
+      source: src/hooks/gh-auth-check.sh
       destination: github-planner/gh-auth-check.sh
 
   # ── Settings ───────────────────────────────────────────────────────────
@@ -256,5 +256,5 @@ supplementaryDoctorChecks:
   - type: shellScript
     name: GitHub CLI authenticated
     section: Authentication
-    command: hooks/gh-auth-check-doctor.sh
+    command: src/hooks/gh-auth-check-doctor.sh
     fixCommand: "gh auth login --scopes repo"

@@ -6,17 +6,17 @@ GitHub Planner is a PM toolkit built as an MCS techpack. If you've managed backl
 
 ### New Discussion Templates
 Add a new type to `/plan-discussion`. The `analysis` type is a good reference — it's intentionally agnostic. A template needs:
-- Interview questions (in `skills/discussion-builder/SKILL.md`)
-- Markdown template (in `skills/discussion-builder/references/`)
+- Interview questions (in `src/skills/discussion-builder/SKILL.md`)
+- Markdown template (in `src/skills/discussion-builder/references/`)
 - Category mapping for GitHub Discussions
 - Entry in the Knowledge Manifest schema
 
 ### New Insight Scopes
 Add a new `--scope` to `/plan-insights`. The `ci` scope is a recent example. A scope needs changes in 4 files:
-- **Skill** (`skills/plan-insights/SKILL.md`) — metrics, thresholds, decision tips
-- **Agent** (`agents/plan-insights-analyst.md`) — fetch commands and computation steps
-- **Report template** (`skills/plan-insights/references/plan-insights-report.md`) — output format
-- **Command** (`commands/plan-insights.md`) — scope option and report section
+- **Skill** (`src/skills/plan-insights/SKILL.md`) — metrics, thresholds, decision tips
+- **Agent** (`src/agents/plan-insights-analyst.md`) — fetch commands and computation steps
+- **Report template** (`src/skills/plan-insights/references/plan-insights-report.md`) — output format
+- **Command** (`src/commands/plan-insights.md`) — scope option and report section
 
 ### Improved Detection Rules
 Better heuristics for:
@@ -83,21 +83,23 @@ Include in your PR description:
 ## Techpack Structure
 
 ```
-skills/     → Knowledge and rules (what to do)
-agents/     → Execution logic (how to do it)
-commands/   → User entry points (slash commands)
-config/     → Settings and permissions
-hooks/      → Session lifecycle scripts
-templates/  → CLAUDE.local.md content and issue/project templates
+src/
+  skills/     → Knowledge and rules (what to do)
+  agents/     → Execution logic (how to do it)
+  commands/   → User entry points (slash commands)
+  config/     → Settings and permissions
+  hooks/      → Session lifecycle scripts
+  templates/  → CLAUDE.local.md content
+techpack.yaml → Pack manifest
 ```
 
 | If you're adding... | You'll touch... |
 |---|---|
-| A discussion type | `skills/discussion-builder/` + `references/` + `agents/discussion-manager.md` + `commands/plan-discussion.md` |
-| An insight scope | `skills/plan-insights/` + `references/` + `agents/plan-insights-analyst.md` + `commands/plan-insights.md` |
-| A triage rule | `skills/issue-triage/` + `agents/issue-analyst.md` |
-| A label mapping | `skills/plan-to-issues/SKILL.md` |
-| A new `gh` command | `config/settings.json` (add to permission allowlist) |
+| A discussion type | `src/skills/discussion-builder/` + `references/` + `src/agents/discussion-manager.md` + `src/commands/plan-discussion.md` |
+| An insight scope | `src/skills/plan-insights/` + `references/` + `src/agents/plan-insights-analyst.md` + `src/commands/plan-insights.md` |
+| A triage rule | `src/skills/issue-triage/` + `src/agents/issue-analyst.md` |
+| A label mapping | `src/skills/plan-to-issues/SKILL.md` |
+| A new `gh` command | `src/config/settings.json` (add to permission allowlist) |
 
 Always update `README.md` if your change adds user-facing functionality.
 
